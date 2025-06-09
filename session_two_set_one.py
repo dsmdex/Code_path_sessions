@@ -7,7 +7,7 @@ def print_list(lst):
 print_list(["squirtle", "gengar", "charizard", "pikachu"])
 
 
-# Problem 2:
+# Problem 2: Print Doubled List
 def doubled(lst):
     if not lst:
         return None
@@ -17,7 +17,6 @@ doubled(lst = [1,2,3])
 
 
 # Problem 3: Return Doubled List
-# Modify the function doubled() so that instead of printing the items, it returns a new list of the doubled numbers.
 def doubled(lst):
     new_list = []
     if len(lst) == 0:
@@ -29,7 +28,7 @@ def doubled(lst):
 print(doubled([1,2,3]))
 
 
-# Problem 4:
+# Problem 4: Flip Signs
 def flip_sign(lst):
     flipped_lst = []
     for item in lst:
@@ -39,8 +38,7 @@ def flip_sign(lst):
 print(flip_sign([1,-2,-3,4]))
 
 
-# Problem 5:
-# Write a function max_difference() that takes in a list of integers lst and returns the difference between the smallest and largest value in the list.
+# Problem 5: Max Difference
 def max_difference(lst):
     smallest = lst[0]
     largest = 0
@@ -53,9 +51,17 @@ def max_difference(lst):
     return largest - smallest
 print(max_difference([5,22,8,10,2]))
 
+# Problemn 6: Below Threshold
+def count_less_than(numbers, threshold):
+    less_than_list = []
+
+    for i in numbers:
+        if i < threshold:
+            less_than_list.append(i)
+    return less_than_list
+count_less_than([12,8,2,4,4,10], 5)
 
 # Problem 7: Evens List
-# Write a function get_evens() that takes in a list of integers lst as a parameter and returns a list of all even numbers in the list.
 def get_evens(lst):
     evens_list = []
     if len(lst) == 0: # if not lst: simpler approach
@@ -68,7 +74,6 @@ print(get_evens([1,2,3,4]))
 
 
 # Problem 8: Multiples of Five
-# Write a function multiples_of_five() that prints out multiples of 5 between 1 and 100 (inclusive).
 def multiples_of_five():
     for item in range(1, 101):
         if item % 5 == 0:
@@ -77,7 +82,6 @@ multiples_of_five()
 
 
 # Problem 9: Divisors
-# Write a function find_divisors() that takes in an integer n as a parameter that returns a list of all divisors of n.
 def find_divisors(n):
     for item in range (1, n + 1):
         if (n % item == 0):
@@ -86,9 +90,6 @@ find_divisors(6)
 
 
 # Problem 10: FizzBuzz
-# Write a function fizzbuzz() that takes in an integer n as a parameter and prints the numbers from 1 to n.
-# For multiples of 3, print "Fizz" instead of the number.
-# For multiples of 5, print "Buzz" instead of the number.
 def fizzbuzz(n):
     for i in range(1, n + 1):
         if i % 3 == 0:
@@ -101,8 +102,6 @@ fizzbuzz(13)
 
 
 # Problem 11: Print the Index
-# Write a function print_indices() that takes in an integer list lst as a parameter and prints out the index of each item in the given list.
-# Use the function range() to loop through the list indices.
 def print_indices(lst):
     for i in range(len(lst)):
         print(i)
@@ -111,8 +110,6 @@ print_indices(lst)
 
 
 # Problem 12: Linear Search
-# Write a function linear_search() that takes in a list lst and value target as parameters. 
-# The function returns the index of target in lst if found. If target is not found in lst, return -1.
 def linear_search(lst, target):
     for i, item in enumerate(lst):
         if item == target:
