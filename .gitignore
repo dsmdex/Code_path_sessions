@@ -1,0 +1,3 @@
+# Files and Folders to be ignored
+venv/
+unit_1_test_A.py
