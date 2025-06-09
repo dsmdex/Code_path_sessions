@@ -12,5 +12,5 @@
     - Each step should be simple and clear
 *  Implement the Solution
     - Translate your plan into code
-        - A clear plan should be relativelu easy to translate. If it's hard to translate, the plan probably isn't good enough.
+        - A clear plan should be relatively easy to translate. If it's hard to translate, the plan probably isn't good enough.
     - Look up any basic Python that you need.
