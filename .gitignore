@@ -1,3 +1,5 @@
 # Files and Folders to be ignored
 venv/
-unit_1_test_A.py
+unit_1/exams/
+unit_2/exams/
+.DS_Store
