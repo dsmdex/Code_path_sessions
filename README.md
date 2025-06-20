@@ -16,4 +16,3 @@ To get started:
 1. Clone the repo:  
    ```bash
    git clone https://github.com/dsmdex/Code_path_sessions.git
-   cd Code_path_sessions
