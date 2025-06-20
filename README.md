@@ -1,6 +1,6 @@
-# CodePath Project - Session 1 Kickoff
+# CodePath Project - Session Collaboration
 
-It will be used to document progress, share code, and track milestones throughout the project lifecycle.
+This project will be used to document progress, share code, and track milestones throughout the project lifecycle.
 
 ## 📌 Project Purpose
 
