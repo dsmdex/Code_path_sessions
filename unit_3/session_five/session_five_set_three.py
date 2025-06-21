@@ -20,12 +20,12 @@ choose_pokemon(pokemon)
 # string where 1 <= n <= len(str).
 def rotate_left(s: str, n: int):
 	if n == len(s):
-		remaining_end = ''.join(s[n])
+		prefix = ''.join(s[n])
 	else:
-		remaining_end = ''.join(s[n + 1:])
+		prefix = ''.join(s[n:])
 	for i in range(0, n):
-		remaining_end += s[i]
-	return remaining_end
+		prefix += s[i]
+	return prefix
 
 string = "excaliburatious"
 print(rotate_left(string, 5))
@@ -63,14 +63,69 @@ print(first_repeated_char(word))
 # for and return the added letter.
 import random
 
-def find_difference(string_one: str, string_two: str):
+def string_randomizer(original_string: str):
+	indexes = [i for i in range(len(original_string))]
+	shuffled_string = ''
+	for _ in range(len(original_string)):
+		random_index = random.choice(indexes)  # choose a random index
+		indexes.remove(random_index)  # remove THAT specific index from the list
+		shuffled_string += original_string[random_index]  # use it to build the shuffled string
+	alphabet = [
+		'a', 'b', 'c', 'd', 'e', 'f', 'g',
+		'h', 'i', 'j', 'k', 'l', 'm', 'n',
+		'o', 'p', 'q', 'r', 's', 't', 'u',
+		'v', 'w', 'x', 'y', 'z']
 	
+	for letter in shuffled_string:
+		if letter in alphabet:
+			alphabet.remove(letter)
 
+	random_imposter = random.choice(alphabet)
+	shuffled_string += random_imposter
+
+	return shuffled_string
+
+
+def find_difference(string_one: str, string_two: str):
+	imposter = ''
+	for letter in string_two:
+		if letter not in string_one:
+			imposter += letter
+			return imposter
+	
+first_string = 'testing'
+second_string = string_randomizer(first_string)
+print(second_string)
+
+print(find_difference(first_string, second_string))
 
 # Problem 5: Longest Substring
 # Write a function that takes in a string s and returns the length of the longest substring
 # without repeating characters.
 
+def longest_substring(s: str):
+	substring_dict = {}
+
+	character_array = []
+
+	count = 0
+	for char in s:
+		if char not in character_array:
+			character_array.append(char)
+			count += 1
+		else:
+			substring = ''.join(character_array)
+			substring_dict[substring] = count
+			character_array = []
+			count = 0
+	
+	biggest_substring = max(substring_dict.items(), key=lambda x: x[1])
+
+	return biggest_substring[0]
+
+
+string_test = 'abcdefhgikaskdnwkemkfd'
+print(longest_substring(string_test))
 
 # Problem 6: Roman to Integer
 # Roman Numerals are represented by seven different symbols (I, V, X, L, C, D, and M) 
@@ -98,3 +153,41 @@ def find_difference(string_one: str, string_two: str):
 # Write a function roman_to_int() that takes in a string s that makes up a roman numeral. 
 # The function should return the integer value of s.
 
+def roman_to_int(s: str):
+    roman_numeral_dict = {
+        'I': 1,
+        'V': 5,
+        'X': 10,
+        'L': 50,
+        'C': 100,
+        'D': 500,
+        'M': 1000
+    }
+
+    numeral_int = []
+    index = 0
+
+    while index < len(s):
+        current_numeral = roman_numeral_dict[s[index]]
+
+        # Check for next numeral before using it
+        if index + 1 < len(s):
+            next_numeral = roman_numeral_dict[s[index + 1]]
+
+            if current_numeral < next_numeral:
+                numeral_int.append(next_numeral - current_numeral)
+                index += 2
+                continue  # Skip rest of loop and go to next pair
+
+        # If not subtractive, or end of string, handle current numeral
+        numeral_int.append(current_numeral)
+        index += 1
+
+    summation = sum(numeral_int)
+    return summation
+
+
+print(roman_to_int("CDV"))  # → 405
+print(roman_to_int("MCMXCIV"))  # → 1994
+print(roman_to_int("III"))  # → 3
+print(roman_to_int("XL"))  # → 40
