@@ -62,10 +62,28 @@ def longest_common_prefix(strings: list):
 string_test = ['dfsf','sfddsfs','sdfds']
 print(longest_common_prefix(string_test))
 
+
 # Problem 4: Consecutive Characters
 # Write a function count_consecutive_characters() that takes in a string str1 as 
 # a parameter and returns the count of the most frequent consecutive character.
+def count_consecutive_characters(str1: str):
+    consecutive_list = []
+    
+    count = 1
+    character = str1[0]
 
+    for i in range(1, len(str1)):
+        if str1[i] == character:
+            count += 1
+        else:
+            consecutive_list.append((character, count))
+            count = 1
+            character = str1[i]
+
+    return max(consecutive_list, key=lambda x: x[1])
+
+test_s = 'adsfdsbbedffsttttteeeeg'
+print(count_consecutive_characters(test_s))
 
 
 # Problem 5: Partition Labels
@@ -74,7 +92,18 @@ print(longest_common_prefix(string_test))
 # they appear in a document. The function partitions s into as many parts as 
 # possible so that each unique letter appears in at most one part, and 
 # returns a list of integers representing the size of these parts.
+def partition_labels(s: str):
+    last_index = {char: idx for idx, char in enumerate(s)}  # Step 1: last occurrence of each char
+    result = []
+    start = end = 0
 
+    for idx, char in enumerate(s):
+        end = max(end, last_index[char])  # Expand end to the furthest last occurrence seen so far
+        if idx == end:  # When current index reaches the end of the partition
+            result.append(end - start + 1)
+            start = idx + 1  # Start new partition
+
+    return result
 
 
 # Problem 6: Interleave Lists
@@ -82,4 +111,19 @@ print(longest_common_prefix(string_test))
 # The function should return a new list that combines the given lists by 
 # alternating which list it takes its next element from. It will take 
 # elements in order, and if one list is longer it will append the 
-# remaining elements to the end of the interleaved list.
+# remaining elements to the end of the interleaved list
+def interleave_lists(list_one: list, list_two: list):
+    interleaved_list = []
+    max_length = max(len(list_one), len(list_two))
+
+    for i in range(max_length):
+        if i < len(list_one):
+            interleaved_list.append(list_one[i])
+        if i < len(list_two):
+            interleaved_list.append(list_two[i])
+
+    return interleaved_list
+
+list1 = [1, 3, 5]
+list2 = [2, 4, 6, 8, 10]
+print(interleave_lists(list1, list2))
