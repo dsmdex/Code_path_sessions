@@ -1,6 +1,8 @@
-'''Problem Set 2 #1 '''
+'''Problem Set 2'''
 
-'''def is_perfect_number(n):
+
+# Problem 1
+def is_perfect_number(n):
     accum = 0
     if n == 1:
         return False
@@ -12,10 +14,10 @@
     return False
 
 print(is_perfect_number(17))
-print(is_perfect_number(28))'''
+print(is_perfect_number(28))
 
-'''Problem Set 2 #2'''
-'''
+
+# Problem 2
 def is_palindrome(s):
 
     beginning = 0
@@ -34,13 +36,15 @@ s2 = "helloworld"
 
 print(is_palindrome(s))
 print(is_palindrome(s2))
-'''
-# Problem Set 2 #3
-'''def is_palindrome(s):
-    reverse = s[::-1]
-    return reverse ==s'''
 
-#Problem Set 2 #4
+
+# Problem 3
+def is_palindrome(s):
+    reverse = s[::-1]
+    return reverse ==s
+
+
+#Problem 4
 def make_palindrome(s):
     beginning = 0
     end = len(s) - 1
@@ -57,19 +61,20 @@ def make_palindrome(s):
             beginning += 1
             end -= 1
     return s
-#s = "egcfe"
-#print(make_palindrome(s)) 
+
+s = "egcfe"
+print(make_palindrome(s)) 
 
 another_string = "banana"
-    # Replaces only the first 'a' with 'e'
+# Replaces only the first 'a' with 'e'
 modified_string = another_string.replace("a", "e", 1)
 
 
-#s = "abcd"
-#print(make_palindrome(s))
+s = "abcd"
+print(make_palindrome(s))
 
 s = "seven"
 print(make_palindrome(s))
 
-# imma keep thinking about this lol...
+
 
