@@ -112,3 +112,89 @@ def print_linked_list(head):
     print("->".join(values))        
 
 print_linked_list(node_1)
+
+# Attempt Number 2
+class Pokemon:
+    def __init__(self, name, types, evolution=None):
+        self.name = name
+        self.types = types
+        self.is_caught = False
+        self.evolution = evolution
+        
+    def print_pokemon(self):
+        print({
+            "name": self.name,   # Output: "name": "Squirtle",
+            "types": self.types, # Output: "types": ["Water"],
+            "is_caught": self.is_caught # Output: "is_caught": False
+        })
+    def catch(self):
+        if self.is_caught == False:
+            self.is_caught = True
+            
+    def choose(self):
+        if self.is_caught == True:
+            print(f"{self.name} I choose you!")
+        else:
+            print(f"{self.name} is wild! Catch them if you can!")
+    
+    def add_type(self, new_type:str):
+        self.types.append(new_type)
+        '''
+        intial state:
+        [electric]
+        updated state:
+        [electric] + [ice]
+        [electric, ice]
+        '''
+def get_by_type(my_pokemon, pokemon_type):
+    passed_list = []
+    for pokemon in my_pokemon:
+        if pokemon_type in pokemon.types:
+            passed_list.append(pokemon.name)
+    return(passed_list)
+
+squirtle = Pokemon("Squirtle", ["Water"])
+
+squirtle.is_caught = True
+squirtle.print_pokemon()
+
+squirtle.print_pokemon()
+squirtle.catch()
+squirtle.print_pokemon()
+squirtle.choose()
+squirtle.add_type("Ice")
+squirtle.print_pokemon()
+
+
+# initializing pokemons
+jigglypuff = Pokemon("Jigglypuff", ["Normal", "Fairy"])
+diglett = Pokemon("Diglett", ["Ground"])
+meowth = Pokemon("Meowth", ["Normal"])
+pidgeot = Pokemon("Pidgeot", ["Normal", "Flying"])
+blastoise = Pokemon("Blastoise", ["Water"])
+
+my_pokemon = [jigglypuff, diglett, meowth, pidgeot, blastoise]
+print(get_by_type(my_pokemon, "Water"))
+
+# Problem 8: Pokemon Evolution
+def get_evolutionary_line(starter_pokemon: object):
+    evolution_line = [starter_pokemon.name]
+    
+    while starter_pokemon.evolution:
+        evolution_line.append(starter_pokemon.name)
+        starter_pokemon = starter_pokemon.evolution
+        
+    return evolution_line
+
+charizard = Pokemon("Charizard", ["fire", "flying"])
+charmeleon = Pokemon("Charmeleon", ["fire"], charizard)
+charmander = Pokemon("Charmander", ["fire"], charmeleon)
+
+charmander_list = get_evolutionary_line(charmander)
+print(charmander_list)
+
+charmeleon_list = get_evolutionary_line(charmeleon)
+print(charmeleon_list)
+
+charizard_list = get_evolutionary_line(charizard)
+print(charizard_list)
