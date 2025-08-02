@@ -1,4 +1,5 @@
 # Files and Folders to be ignored
+code_path_collab/
 venv/
 unit_1/exams/
 unit_2/exams/
