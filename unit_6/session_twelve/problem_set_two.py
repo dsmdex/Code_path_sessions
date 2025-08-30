@@ -192,7 +192,7 @@ def rotate_right(head: Node, k: int) -> Node:
         tail = tail.next
         length_of_ll += 1
 
-    # determine how the shifts we wil need
+    # determine how many shifts we will need
     k = k % length_of_ll
 
     if k == 0:

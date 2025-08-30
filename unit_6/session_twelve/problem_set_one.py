@@ -38,7 +38,7 @@ num1 = Node(1, num2)
 
 print(is_circular(num1))
 
-# Problem 2: FInd Last Node in a Linked List Cycle
+# Problem 2: Find Last Node in a Linked List Cycle
 def find_last_node_in_cycle(head: Node) -> Node:
     """Returns the last node in a cycle if it exists, otherwise None."""
     
