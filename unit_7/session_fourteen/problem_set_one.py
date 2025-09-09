@@ -54,4 +54,4 @@ print(count_ones([]))
 
 # Problem 3: Binary Search IV
 def binary_search(nums: list, target: int) -> int:
-    
+    pass
